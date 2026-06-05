@@ -4,13 +4,27 @@ namespace App\Models;
 
 use App\Enums\ApplicationStatus;
 use App\Events\ApplicationCreated;
+use Database\Factories\ApplicationFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Application extends Model
 {
+    /** @use HasFactory<ApplicationFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'status',
+        'customer_id',
+        'plan_id',
+        'address_1',
+        'address_2',
+        'city',
+        'state',
+        'postcode',
+        'order_id',
+    ];
 
     protected $casts = [
         'status' => ApplicationStatus::class,
